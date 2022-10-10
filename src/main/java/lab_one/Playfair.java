@@ -1,4 +1,4 @@
-package lab_one.additionals;
+package lab_one;
 
 
 import lab_one.Cipher;
