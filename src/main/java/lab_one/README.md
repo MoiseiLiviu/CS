@@ -1,7 +1,7 @@
 # Laboratory Work 1, Ciphers Implementation
 
 ### Course: Cryptography & Security
-### Author: Moisei Liviu
+### Author: Liviu Mocanu
 
 ----
 
@@ -115,6 +115,22 @@ The deciphering is executed according to the rules similar to those of encryptio
 Using the example above ($k = Playfair$) for the clear text m = "Hello world" we obtain the encrypted text $c = KG\ YV\ RV\ VQ\ GR\ CZ$. Here we introduced between letters $ll$ the letter X and an extra letter X at the end because the amount of characters of the plaintext in this case becomes odd. When deciphering according to the meaning of the message, the letter X is omitted.
 
 The use of the Playfair cipher currently does not make sense because modern laptops can easily break the cipher in seconds.
+
+
+## Objectives:
+
+1. Get familiar with the basics of cryptography and classical ciphers.
+
+2. Implement 4 types of the classical ciphers:
+    - Caesar cipher with one key used for substitution,
+    - Affine cipher
+    - Vigenere cipher,
+    - Xor cipher,
+    - Playfair cipher. (additional)
+    - Hill cipher (additional)
+    - Polybius cipher (additional)
+
+3. Structured the implementations in implementation package and interface in interfaceCipher package.
 
 
 ## Implementation description
