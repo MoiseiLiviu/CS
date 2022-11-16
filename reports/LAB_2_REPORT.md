@@ -113,11 +113,15 @@ P1=0x243f6a88, P2=0x85a308d3, P3=0x13198a2e, P4=0x3707344, etc.
 #### Data encryption:
 
 The process consists of 16 rounds, the process goes as follows:
+
+![alt](https://media.geeksforgeeks.org/wp-content/uploads/20190929211024/round-blowfish1.jpg)
+
 * Take input that is a 64-bit data element, x. Divide x into two 32-bit halves : xL, xR.
 * Then, for i = 1 to 16;
 
 - xL = xLXOR Pi
-- xR = F(xL) XOR xR
+- xR = F(xL) XOR xR. Description of function F:
+![alt](https://media.geeksforgeeks.org/wp-content/uploads/20190929212325/F-blowfish.jpg)
 - Swap xL and xR
 
 * After the 16th round, Swap xL and xR again to undo the last swap.

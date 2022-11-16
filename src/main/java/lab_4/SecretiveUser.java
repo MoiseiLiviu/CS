@@ -13,11 +13,11 @@ import javax.persistence.Id;
 @ToString
 @Getter
 @Setter
-public class User {
+public class SecretiveUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String password;
+    private String pwd;
 }

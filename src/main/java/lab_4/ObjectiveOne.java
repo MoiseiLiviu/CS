@@ -18,9 +18,10 @@ public class ObjectiveOne {
     public void execute() {
         String password = "Secret_password";
         String hashedPwd = BCrypt.hashpw(password, BCrypt.gensalt());
-        log.info("Hashed pwd : " + hashedPwd);
-        User user = new User();
-        user.setPassword(hashedPwd);
-        userRepository.save(user);
+        SecretiveUser secretiveUser = new SecretiveUser();
+        secretiveUser.setPwd(hashedPwd);
+        SecretiveUser savedUser = userRepository.save(secretiveUser);
+
+        log.info("Persisted hashed pwd : "+savedUser.getPwd());
     }
 }
