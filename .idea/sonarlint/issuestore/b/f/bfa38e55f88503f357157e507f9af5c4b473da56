@@ -1,0 +1,10 @@
+
+f	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–®¥§
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(å¢ØÂûÿÿÿÿ8òŒŽÓÇ0
+p	java:S116"VRename this field "BYTE_VALUES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ÌßÈøÿÿÿÿ
+a	java:S116	"LRename this field "S" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ïÛÒ
+f	java:S116"LRename this field "K" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢ÞâÃýÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(”ÌßÈøÿÿÿÿ
+K
+java:S1117K"5Rename "K" which hides the field declared at line 11.(–®¥§
