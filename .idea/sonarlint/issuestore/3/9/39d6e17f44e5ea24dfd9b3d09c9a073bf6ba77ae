@@ -1,0 +1,20 @@
+
+3
+java:S1643ê"Use a StringBuilder instead.(üÜıô
+8
+java:S1643í"Use a StringBuilder instead.(ôçÍÿøÿÿÿÿ
+8
+java:S1643÷"Use a StringBuilder instead.(ü†§˜ıÿÿÿÿ
+3
+java:S1643‚"Use a StringBuilder instead.(Œœ•¢
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àèŒÚúÿÿÿÿ
+f	java:S116"LRename this field "S" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™øòğùÿÿÿÿ
+g	java:S116Ù"LRename this field "P" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê¤³Äùÿÿÿÿ
+G
+java:S1197",Move the array designators [][] to the type.(™øòğùÿÿÿÿ
+F
+java:S1197Ù"*Move the array designators [] to the type.(ê¤³Äùÿÿÿÿ
+A
+java:S1197–"*Move the array designators [] to the type.(†®¢
+?
+java:S1659²"#Declare "right" on a separate line.(Å¯ÜÑıÿÿÿÿ

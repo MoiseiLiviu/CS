@@ -1,0 +1,3 @@
+
+m	java:S1270"XRefactor the code in order to not assign to this loop counter from within the loop body.(Þ¼Þ¢
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡Ò’çúÿÿÿÿ
