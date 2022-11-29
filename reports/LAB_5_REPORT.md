@@ -30,19 +30,19 @@ Regarding authorization, the most popular mechanisms are the following:
 
 ## Implementation description:
 
-The web server is developed with the use of Spring framework, we use Spring Security module for authentication/authorization functionalities. 
+* The web server is developed with the use of Spring framework, we use Spring Security module for authentication/authorization functionalities. 
 Spring Security architecture is based on the chain of responsibility pattern, there is a chain of filters that are processed before each request. Any of the filters can authorize the user to proceed with the request if 
 some condition is fulfilled. In our case, we add a custom filter called 'JwtTokenAuthenticationFilter'. This filter takes the JWT token we provide inside the 'Authorization' header, extracts the username of the issuing user 
 and also the roles that are granted to this user.
 ![img.png](img.png)
-All the info needed to perform role based access control is contained by the object Authentication. We extract all this info from the token in the header, and then store the Authentication object inside the SecurityContextHolder for later use.
+* All the info needed to perform role based access control is contained by the object Authentication. We extract all this info from the token in the header, and then store the Authentication object inside the SecurityContextHolder for later use.
 To authenticate, the user uses the endpoint /auth/signin and passes his username and password inside the request body. After we validate these credentials we return the token which contains the user roles, but doesn't contain the role 'Verified'. 
 ![img_1.png](img_1.png)
-In order to obtain the 'VERIFIED' role, the user needs to pass MFA. For this purpose he can use the /auth/verify/{code} endpoint where he passes the code from the authenticator app.
+* In order to obtain the 'VERIFIED' role, the user needs to pass MFA. For this purpose he can use the /auth/verify/{code} endpoint where he passes the code from the authenticator app.
 ![img_2.png](img_2.png)
-This code depends on the secret we generate for the user at registration and on the current UTC time. The expiration time for the code is 30 seconds.
+* This code depends on the secret we generate for the user at registration and on the current UTC time. The expiration time for the code is 30 seconds.
 ![img_3.png](img_3.png)
-After registration we return the Base64 encoded version of a QR code that can be scanned through a authenticator app to fetch the codes at any time.
+* After registration we return the Base64 encoded version of a QR code that can be scanned through a authenticator app to fetch the codes at any time.
 ![img_4.png](img_4.png)
-Lastly, to actually verify if the user has the necessary roles, and if he went through all the authentication processes, we use the @PreAuthorize("hasAuthority()") annotation. This will use the aspect oriented side of Spring to create a proxy object
+* Lastly, to actually verify if the user has the necessary roles, and if he went through all the authentication processes, we use the @PreAuthorize("hasAuthority()") annotation. This will use the aspect oriented side of Spring to create a proxy object
 around controller class and add all the authorization logic and role verification before the method executes.
