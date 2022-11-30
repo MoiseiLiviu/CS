@@ -1,7 +1,10 @@
 package com.cs.lab_5.authservice.controller;
 
 
-import com.cs.lab_5.authservice.payload.*;
+import com.cs.lab_5.authservice.payload.JwtAuthenticationResponse;
+import com.cs.lab_5.authservice.payload.LoginRequest;
+import com.cs.lab_5.authservice.payload.SignUpRequest;
+import com.cs.lab_5.authservice.payload.SignupResponse;
 import com.cs.lab_5.authservice.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +21,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signin")
-    public JwtAuthenticationResponse authenticateUser(@Valid @RequestBody final LoginRequest loginRequest) {
+    public JwtAuthenticationResponse authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         return authService.loginUser(loginRequest.username(), loginRequest.password());
     }
 

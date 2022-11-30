@@ -1,13 +1,14 @@
 package com.cs.lab_5.authservice.service;
 
-import dev.samstevens.totp.code.*;
+import dev.samstevens.totp.code.DefaultCodeGenerator;
+import dev.samstevens.totp.code.DefaultCodeVerifier;
+import dev.samstevens.totp.code.HashingAlgorithm;
 import dev.samstevens.totp.exceptions.QrGenerationException;
 import dev.samstevens.totp.qr.QrData;
 import dev.samstevens.totp.qr.ZxingPngQrGenerator;
 import dev.samstevens.totp.secret.DefaultSecretGenerator;
 import dev.samstevens.totp.secret.SecretGenerator;
 import dev.samstevens.totp.time.SystemTimeProvider;
-import dev.samstevens.totp.time.TimeProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -32,22 +33,23 @@ public class TotpManager {
                 .digits(6)
                 .period(30)
                 .build();
-        final var generator = new ZxingPngQrGenerator();
+        final var qrGenerator = new ZxingPngQrGenerator();
         byte[] imageData = new byte[0];
         try {
-            imageData = generator.generate(data);
+            imageData = qrGenerator.generate(data);
         } catch (QrGenerationException e) {
            log.error("unable to generate QrCode");
         }
-        final String mimeType = generator.getImageMimeType();
+        final String mimeType = qrGenerator.getImageMimeType();
 
         return getDataUriForImage(imageData, mimeType);
     }
 
-    public boolean verifyCode(String code, String secret) {
-        TimeProvider timeProvider = new SystemTimeProvider();
-        CodeGenerator codeGenerator = new DefaultCodeGenerator();
-        CodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
+    public boolean verifyCode(final String code, final String secret) {
+        final var timeProvider = new SystemTimeProvider();
+        final var codeGenerator = new DefaultCodeGenerator();
+        final var verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
+
         return verifier.isValidCode(secret, code);
     }
 }

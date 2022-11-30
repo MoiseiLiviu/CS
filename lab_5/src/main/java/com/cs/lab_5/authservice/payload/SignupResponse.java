@@ -1,12 +1,5 @@
 package com.cs.lab_5.authservice.payload;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+public record SignupResponse(boolean mfa, String secretImageUri) {
 
-@Data
-@AllArgsConstructor
-public class SignupResponse {
-
-    private boolean mfa;
-    private String secretImageUri;
 }
