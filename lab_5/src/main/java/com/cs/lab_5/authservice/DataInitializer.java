@@ -14,13 +14,15 @@ public class DataInitializer implements CommandLineRunner {
     private final RoleRepository roleRepository;
 
     @Override
-    public void run(String... args) throws Exception {
-        Role userRole = new Role();
-        userRole.setName(ERole.USER);
-        roleRepository.save(userRole);
+    public void run(String... args) {
+        if (roleRepository.count() == 0) {
+            Role userRole = new Role();
+            userRole.setName(ERole.USER);
+            roleRepository.save(userRole);
 
-        Role adminRole = new Role();
-        adminRole.setName(ERole.ADMIN);
-        roleRepository.save(adminRole);
+            Role adminRole = new Role();
+            adminRole.setName(ERole.ADMIN);
+            roleRepository.save(adminRole);
+        }
     }
 }

@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .addFilterBefore(jwtTokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/auth/signin").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth/register").anonymous()
                 .anyRequest().authenticated();
         http.headers().frameOptions().disable();

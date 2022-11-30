@@ -44,7 +44,7 @@ public class User {
     @LastModifiedDate
     private Instant updatedAt;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
     private boolean mfa = false;
     private String secret;

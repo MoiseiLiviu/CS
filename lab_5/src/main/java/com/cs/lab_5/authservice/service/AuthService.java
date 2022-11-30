@@ -9,7 +9,6 @@ import com.cs.lab_5.authservice.payload.SignUpRequest;
 import com.cs.lab_5.authservice.payload.SignupResponse;
 import com.cs.lab_5.authservice.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class AuthService {
 
     private final UserService userService;
@@ -33,12 +31,12 @@ public class AuthService {
     @Transactional
     public SignupResponse registerNewUser(SignUpRequest signUpRequest) {
         User newUser = new User();
-        newUser.setUsername(signUpRequest.getUsername());
-        newUser.setEmail(signUpRequest.getEmail());
-        newUser.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+        newUser.setUsername(signUpRequest.username());
+        newUser.setEmail(signUpRequest.email());
+        newUser.setPassword(passwordEncoder.encode(signUpRequest.password()));
         Role role = roleRepository.findByName(ERole.USER).orElseThrow();
         newUser.getRoles().add(role);
-        if (signUpRequest.isMfa()) {
+        if (signUpRequest.mfa()) {
             newUser.setMfa(true);
             newUser.setSecret(totpManager.generateSecret());
         }
